@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding='utf8'?>
+<environnment>
+	<server name="Nexpose name">
+		<username></username>
+		<password></password>
+		<host></host>
+		<api_key></api_key>
+		<baseline_report_id></baseline_report_id>
+		<report_id></report_id>
+		<report_name></report_name>
+		<folder_path></folder_path>
+		<log_file></log_file>
+		<log_file_debug></log_file_debug>
+		<destination></destination>
+		<path_csv_delta></path_csv_delta>
+		<path_csv_to_check></path_csv_to_check>
+		<sid_path></sid_path>
+		<deltacheck></deltacheck>
+		<output_csv_path></output_csv_path>
+		<path_csv_to_check2></path_csv_to_check2>
+		<log_file_2></log_file_2>
+		<warningfile></warningfile>
+		<warningfile2></warningfile2>
+		<destination_opt2></destination_opt2>
+		<output_csv_path3></output_csv_path3>
+		<path_csv_delta3></path_csv_delta3>
+		<output_site_path></output_site_path>
+		<sid_path3></sid_path3>
+		<log_file_3></log_file_3>
+		<deltacheck3></deltacheck3>
+		<output_excel_path></output_excel_path>
+	</server>
+	<server name="Nexpose name">
+		<username></username>
+		<password></password>
+		<host></host>
+		<api_key></api_key>
+		<baseline_report_id></baseline_report_id>
+		<report_id></report_id>
+		<report_name></report_name>
+		<folder_path></folder_path>
+		<log_file></log_file>
+		<log_file_debug></log_file_debug>
+		<destination></destination>
+		<path_csv_delta></path_csv_delta>
+		<path_csv_to_check></path_csv_to_check>
+		<sid_path></sid_path>
+		<deltacheck></deltacheck>
+		<output_csv_path></output_csv_path>
+		<path_csv_to_check2></path_csv_to_check2>
+		<log_file_2></log_file_2>
+		<warningfile></warningfile>
+		<warningfile2></warningfile2>
+		<destination_opt2></destination_opt2>
+	</server>
+	<sql_query>
+		<!-- query 1 week for weekly report -->
+		<query></query>
+		<query_2></query_2>
+		<!-- Get all asset -->
+		<query_asset></query_asset>
+		<!-- 1 month query for FMM -->
+		<query_fmm_montly></query_fmm_montly>
+		<query_fmm_montly_2></query_fmm_montly_2>
+	</sql_query>
+</environnment>
+
