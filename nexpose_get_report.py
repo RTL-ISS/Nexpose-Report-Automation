@@ -383,7 +383,7 @@ def analyze_assets(x,warningfile,path_csv_to_check):
 
 
 #Conditional Formatting
-def color(output_csv_path):
+def color_fmm(output_csv_path):
     df = pd.read_csv(output_csv_path)
     if sys.argv[2] == 3:
         if 'Delta Risk' in df.columns or 'Delta Critical' in df.columns:
@@ -435,6 +435,13 @@ def color(output_csv_path):
         else:
             df.drop(columns=["id"]).rename(columns={"Remediated Vuln": "Total Remediated last week", "New Vuln": "New Vulnerabilities Discovered"}).sort_values("Total Vulnerabilities Discovered",ascending=False).to_csv(output_csv_path, index=False)         
 
+def color(output_csv_path):
+    df = pd.read_csv(output_csv_path)
+    if 'Delta Risk' in df.columns or 'Delta Critical' in df.columns:
+        df = df[['id','Site','Total Assets','Total Vulnerabilities Discovered','Total Critical Vulnerabilities','Total Severe Vulnerabilities','Total Moderate Vulnerabilities','New Vuln','Remediated Vuln','Delta Critical','Total Risk','Average risk','Delta Risk']]
+        df.drop(columns=["id"]).rename(columns={"Remediated Vuln": "Total Remediated last week", "New Vuln": "New Vulnerabilities Discovered"}).sort_values("Total Vulnerabilities Discovered",ascending=False).to_csv(output_csv_path, index=False)
+    else:
+        df.drop(columns=["id"]).rename(columns={"Remediated Vuln": "Total Remediated last week", "New Vuln": "New Vulnerabilities Discovered"}).sort_values("Total Vulnerabilities Discovered",ascending=False).to_csv(output_csv_path, index=False)      
 
 
 def send_email(week_num,year,output_csv_path,warningfile):
@@ -463,7 +470,9 @@ def send_email(week_num,year,output_csv_path,warningfile):
     # Remove the temp file 
     os.remove('/path/to/temp/processing/file')
 
-
+def send_email_fmm(month,year,output_excel_path):             
+    command = f'(echo "Please find attachment for more information" | mail -s "Montly report for {sys.argv[1]} on week {month} year {year}" -a "From: SENDER-EMAIL" RECIPIENT-EMAIL -A {output_excel_path}) '
+    subprocess.run(command, shell=True)
 
 
 
@@ -570,7 +579,9 @@ if __name__ == '__main__':
             logger.info('Final output')
             final_output(output_csv_path,path_csv_delta,logger)
             logger.info('Add color')
-            color(output_csv_path)
+            color_fmm(output_csv_path)
+            logger.info('Send email')
+            send_email_fmm(month,year,output_excel_path)
         logger.info(f'################################\n                           #             DONE             #\n                           ################################')
     except Exception as e:
         logger.exception(e)
